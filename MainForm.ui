@@ -1,0 +1,2675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>2440</width>
+    <height>1177</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Приложение обработки данных о выставочных экспонатах</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>letter-e.ico</normaloff>letter-e.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QComboBox" name="comboBoxTablitsi">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Vyst_mo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>VUZ</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>grntirub</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="pushButtonUpdateTable">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>20</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>refresh-page-option.ico</normaloff>refresh-page-option.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QTableView" name="main_table">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>2391</width>
+      <height>781</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>1030</x>
+      <y>10</y>
+      <width>901</width>
+      <height>1121</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page1_filtr">
+     <widget class="QWidget" name="filter_widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>821</width>
+        <height>981</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+border-radius: 10px</string>
+      </property>
+      <widget class="QLabel" name="label_paramfiltr">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>20</y>
+         <width>221</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Параметры фильтрации</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="close_button">
+       <property name="geometry">
+        <rect>
+         <x>770</x>
+         <y>10</y>
+         <width>21</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>close.ico</normaloff>close.ico</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>100</y>
+         <width>151</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Федеральный округ</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>220</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Город</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>320</y>
+         <width>101</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Рубрика</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="filter_sbros_button">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>700</y>
+         <width>750</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+       <property name="text">
+        <string>Сбросить</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>cancel.ico</normaloff>cancel.ico</iconset>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_region">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>137</y>
+         <width>750</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Дальневосточный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Приволжский</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Северо-Западный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Северо-Кавказский</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Сибирский</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Уральский</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Центральный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Южный</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="combox_rubrica">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>358</y>
+         <width>750</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Общественные науки в целом</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Философия</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>История, исторические науки</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Социология</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Демография</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Экономика, экономические науки</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Государство и право, юридические науки</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Политика, политические науки</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Науковедение</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Культура</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Народное образование, педагогика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Психология</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Языкознание</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Литература, литературоведение, народное поэтическое творчество</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Искусство, искусствоведение</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Массовая коммуникация, журналистика, средства массовой информации</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Информатика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Религия, атеизм</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Комплексное изучение отдельных стран и регионов</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Комплексные проблемы общественных наук</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Математика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Кибернетика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Физика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Механика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Химия</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Биология</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Геодезия, картография</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Геофизика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Геология</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>География</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Астрономия</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Общие и комплексные проблемы естественных и точных наук</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Энергетика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Электротехника</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Электроника, радиотехника</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Связь</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Автоматика и телемеханика, вычислительная техника</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Горное дело</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Металлургия</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Машиностроение</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Ядерная техника</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Приборостроение</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Полиграфия, репрография, фотокинотехника</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Химическая технология, химическая промышленность</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Биотехнология</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Легкая промышленность</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Пищевая промышленность</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Лесная и деревообрабатывающая промышленность</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Строительство, архитектура</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Сельское и лесное хозяйство</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Рыбное хозяйство</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Водное хозяйство</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Внутренняя торговля, туристско-эскурсионное обслуживание</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Внешняя торговля</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Транспорт</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Жилищно-коммунальное хозяйство, домоводство, бытовое обслуживание</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Медицина и здравоохранение</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Физическая культура и спорт</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Военное дело</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Прочие отрасли народного хозяйства</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Общие и комплексные проблемы технич.и прикл. наук и отраслей экономики</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Организация и управление</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Статистика</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Стандартизация</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Патентное дело, изобретательство, рационализаторство</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Охрана труда</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Охрана окружающей среды, экология человека</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Космические исследования</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Метрология</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_24">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>430</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>ВУЗ</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_25">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>540</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Тип выст. экспоната</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_vistexp">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>578</y>
+         <width>750</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_vuz">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>468</y>
+         <width>750</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_city">
+       <property name="geometry">
+        <rect>
+         <x>49</x>
+         <y>247</y>
+         <width>750</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="question_button">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>360</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>-1</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> background-color: white;
+        color: black;
+        border: 1px solid black;
+        padding: 5px;
+        border-radius: 3px;
+        opacity: 200;
+		font-family: Arial;
+        font-size: 12px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>question-sign.ico</normaloff>question-sign.ico</iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_3">
+     <widget class="QWidget" name="filter_widget_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>10</y>
+        <width>821</width>
+        <height>1081</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+border-radius: 10px</string>
+      </property>
+      <widget class="QLabel" name="label_paramfiltr_2">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>221</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Добавление строки</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="add_str_button">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>930</y>
+         <width>700</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+       <property name="text">
+        <string>Добавить строку</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>plus-button.ico</normaloff>plus-button.ico</iconset>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_type">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>260</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_vuz_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>234</y>
+         <width>181</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Тематический план</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_29">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>171</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>ВУЗ/организация</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_20">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>650</y>
+         <width>331</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Название выстовочного экспоната</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="exponat_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>670</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_19">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>320</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Руководитель НИР</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="bossname_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>350</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_23">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>410</y>
+         <width>251</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Должность руководителя НИР</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="bosstitle_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>440</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>820</y>
+         <width>241</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Наименование проекта</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="subject_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>850</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_vistexp_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>590</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_28">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>570</y>
+         <width>191</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Тип выст. экспоната</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>494</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Коды ГРНТИ</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="vystavki_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>760</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>730</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Выставки</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="grnti_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>520</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="close_button_2">
+       <property name="geometry">
+        <rect>
+         <x>770</x>
+         <y>20</y>
+         <width>21</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>close.ico</normaloff>close.ico</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sbros_str_button">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>980</y>
+         <width>700</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+       <property name="text">
+        <string>Сбросить значения</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>cancel.ico</normaloff>cancel.ico</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_17">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>201</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Регистрационный номер</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="regnumber_text">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>180</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page2_sorting">
+     <widget class="QWidget" name="filter_widget_3" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>800</width>
+        <height>1101</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+border-radius: 10px</string>
+      </property>
+      <widget class="QLabel" name="label_paramfiltr_3">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>20</y>
+         <width>231</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Редактирование строки</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="edit_str_button">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>810</y>
+         <width>700</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+       <property name="text">
+        <string>Изменить строку</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>edit.ico</normaloff>edit.ico</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="close_button_3">
+       <property name="geometry">
+        <rect>
+         <x>760</x>
+         <y>20</y>
+         <width>21</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>close.ico</normaloff>close.ico</iconset>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_type_2">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>181</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_vuz_3">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>100</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>160</y>
+         <width>171</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Тематический план</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_30">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>80</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>ВУЗ/организация</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_21">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>610</y>
+         <width>261</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Название выстовочного экспоната</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="exponat_text_2">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>635</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_22">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>230</y>
+         <width>171</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Руководитель НИР</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="bossname_text_2">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>251</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_26">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>305</y>
+         <width>251</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Должность руководителя НИР</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="bosstitle_text_2">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>328</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_15">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>690</y>
+         <width>241</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Наименование проекта</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="subject_text_2">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>712</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="combox_vistexp_3">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>481</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Е</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Н</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>П</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_31">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>460</y>
+         <width>171</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Тип выст. экспоната</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>380</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Коды ГРНТИ</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="vystavki_text_2">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>558</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_16">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>532</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Выставки</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="grnti_text_2">
+       <property name="geometry">
+        <rect>
+         <x>19</x>
+         <y>405</y>
+         <width>780</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Yu Gothic UI Semibold</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>193</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semibold</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Код ВУЗа</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combox_codvuz">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>220</y>
+        <width>780</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semibold</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combox_codvuz_2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>510</y>
+        <width>780</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semibold</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combox_regnumber_2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>438</y>
+        <width>780</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semibold</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>416</y>
+        <width>211</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semibold</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Регистрационный номер</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>490</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semibold</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Код ВУЗа</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combox_regnumber">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>114</y>
+        <width>780</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semibold</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>90</y>
+        <width>201</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semibold</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Регистрационный номер</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="sort_button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>860</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string>Сортировать</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>sorting.ico</normaloff>sorting.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="up_down_sort_box">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>861</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Возрастанию</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>up-arrow-_1_.ico</normaloff>up-arrow-_1_.ico</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Убыванию</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>down-arrow.ico</normaloff>down-arrow.ico</iconset>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="add_str_button_2">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>860</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string>Добавить строку</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>plus-button.ico</normaloff>plus-button.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="edit_str_button_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>860</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string>Редактировать строку</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>edit.ico</normaloff>edit.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="save_button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>910</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string>Сохранить группу</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>save.ico</normaloff>save.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="load_button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>950</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string>Загрузить группу</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icos/downloads.ico</normaloff>icos/downloads.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="undo_table_button">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>20</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string>Восставновить таблицу</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>undo-circular-arrow.ico</normaloff>undo-circular-arrow.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="del_str_button_2">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>900</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string>Удалить строку</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>delete.ico</normaloff>delete.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QWidget" name="rubrics_widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>19</y>
+      <width>711</width>
+      <height>871</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <widget class="QTableView" name="rubriks_table">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>11</y>
+       <width>641</width>
+       <height>851</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="close_button_4">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>10</y>
+       <width>21</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>close.ico</normaloff>close.ico</iconset>
+     </property>
+    </widget>
+   </widget>
+   <zorder>comboBoxTablitsi</zorder>
+   <zorder>pushButtonUpdateTable</zorder>
+   <zorder>main_table</zorder>
+   <zorder>sort_button</zorder>
+   <zorder>up_down_sort_box</zorder>
+   <zorder>add_str_button_2</zorder>
+   <zorder>edit_str_button_2</zorder>
+   <zorder>stackedWidget</zorder>
+   <zorder>save_button</zorder>
+   <zorder>load_button</zorder>
+   <zorder>undo_table_button</zorder>
+   <zorder>del_str_button_2</zorder>
+   <zorder>rubrics_widget</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>2440</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI Semibold</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <widget class="QMenu" name="menu1_file">
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="action3_updatetable"/>
+    <addaction name="save_table_act"/>
+   </widget>
+   <widget class="QMenu" name="menu2_filtr">
+    <property name="title">
+     <string>Фильтрация</string>
+    </property>
+    <addaction name="param_filtr"/>
+   </widget>
+   <addaction name="menu1_file"/>
+   <addaction name="menu2_filtr"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action1_savetable">
+   <property name="text">
+    <string>Сохранить таблицу</string>
+   </property>
+  </action>
+  <action name="action2_deletetable">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Удалить таблицу</string>
+   </property>
+  </action>
+  <action name="action3_updatetable">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Обновить данные</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI Semibold</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="param_filtr">
+   <property name="text">
+    <string>Задать параметры фильтрации</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI Semibold</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="param_sort">
+   <property name="text">
+    <string>Выбрать параметры сортировки</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI Semibold</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="add_del_new_str">
+   <property name="text">
+    <string>Добавить/удалить строку</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI Semibold</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="del_str">
+   <property name="text">
+    <string>Удалить строку</string>
+   </property>
+  </action>
+  <action name="redact_str">
+   <property name="text">
+    <string>Редактировать строку</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI Semibold</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="save_table_act">
+   <property name="text">
+    <string>Сохранить таблицу как</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
