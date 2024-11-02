@@ -1,7 +1,8 @@
 import os
 import shutil
 from PyQt6.QtGui import QAction
-from PyQt6.QtWidgets import QStackedWidget, QLineEdit, QFileDialog, QMessageBox, QWidget, QVBoxLayout, QDialog, QToolTip
+from PyQt6.QtWidgets import QStackedWidget, QLineEdit, QFileDialog, QMessageBox, QWidget, QVBoxLayout, QDialog, \
+    QToolTip, QTextBrowser
 from PyQt6.QtSql import QSqlDatabase
 from PyQt6 import QtWidgets, uic
 from PyQt6.QtWidgets import QTableView, QPushButton, QComboBox, QApplication
@@ -238,7 +239,34 @@ class PandasModel(QAbstractTableModel):
             return filtered_data.iloc[0].tolist()
         return None
 
+
+# Найдите элемент QTextBrowser в вашем интерфейсе
+current_table_text = window.findChild(QTextBrowser, "current_table_text")
+
+# Функция для обновления содержимого QTextBrowser
+def update_current_table_text(current_table_name):
+    if current_table_name.endswith(".csv") or current_table_name.endswith(".xlsx"):
+        current_table_text.setPlainText(f"Загруженная таблица: {current_table_name}")
+    else:
+        current_table_text.setPlainText(f"Текущая таблица: {current_table_name}")
+
+
+# Найдите элемент QTextBrowser в вашем интерфейсе
+amount_str_text = window.findChild(QTextBrowser, "amount_str_text")
+
+# Функция для обновления содержимого QTextBrowser с количеством строк
+def update_amount_str_text():
+    model = table.model()
+    if model:
+        row_count = model.rowCount()
+        amount_str_text.setPlainText(f"Количество строк: {row_count}")
+    else:
+        amount_str_text.setPlainText("Количество строк: 0")
+
+# Функция для загрузки таблицы
 def show_table(table_name):
+    current_table_name = table_name
+
     with sqlite3.connect(temp_db_file) as con:
         cur = con.cursor()
         cur.execute(f"SELECT * FROM {table_name}")
@@ -260,7 +288,8 @@ def show_table(table_name):
 
     # Подключение к модели выбора таблицы
     selection_model = table.selectionModel()
-    selection_model.selectionChanged.connect(handle_table_selection)
+    if selection_model:
+        selection_model.selectionChanged.connect(lambda index: update_current_table_text(current_table_name))
 
     # Настройка выбора строки
     table.setSelectionMode(QTableView.SelectionMode.SingleSelection)  # Устанавливаем свойство
@@ -271,9 +300,15 @@ def show_table(table_name):
     del_str_button_2.setEnabled(True)
     disconnect_db()
 
+    # Обновите содержимое QTextBrowser при загрузке таблицы
+    update_current_table_text(current_table_name)
+    update_amount_str_text()
+
+
 combox_region = window.findChild(QComboBox, "combox_region")
 combox_city = window.findChild(QComboBox, "combox_city")
 combox_rubrica = window.findChild(QComboBox, "combox_rubrica")
+combox_rubrica.currentIndexChanged.connect(lambda index: hide(rubrics_widget))
 combox_vuz = window.findChild(QComboBox, "combox_vuz")
 combox_vistexp = window.findChild(QComboBox, "combox_vistexp")
 
@@ -362,6 +397,7 @@ combox_vuz.currentIndexChanged.connect(lambda index: fill_comboxes_by_vuz(combox
 
 fill_combox(combox_rubrica, "rubrika", "grntirub")
 
+
 def string_for_filter():
     region_value = combox_region.currentText()
     city_value = combox_city.currentText()
@@ -369,9 +405,15 @@ def string_for_filter():
     vuz_value = combox_vuz.currentText()
     vistexp_value = combox_vistexp.currentText()
 
-    base_query = "SELECT Vyst_mo.* FROM Vyst_mo"
-    join_clause = "INNER JOIN VUZ ON Vyst_mo.codvuz = VUZ.codvuz"
-    join_grntirub = "INNER JOIN grntirub ON SUBSTR(Vyst_mo.grnti, 1, 2) = grntirub.codrub OR SUBSTR(Vyst_mo.grnti, INSTR(Vyst_mo.grnti, ',') + 1, 2) = grntirub.codrub"
+    base_query = """SELECT * FROM (
+                        SELECT 
+                            Vyst_mo.*, 
+                            ROW_NUMBER() OVER (PARTITION BY Vyst_mo.codvuz, Vyst_mo.type, Vyst_mo.regnumber ORDER BY Vyst_mo.codvuz) as rn
+                        FROM Vyst_mo"""
+
+    join_clause = """INNER JOIN VUZ ON Vyst_mo.codvuz = VUZ.codvuz
+                     INNER JOIN grntirub ON SUBSTR(Vyst_mo.grnti, 1, 2) = grntirub.codrub 
+                     OR SUBSTR(Vyst_mo.grnti, INSTR(Vyst_mo.grnti, ',') + 1, 2) = grntirub.codrub"""
 
     where_clause = []
 
@@ -388,7 +430,8 @@ def string_for_filter():
             codrub_value = cur.fetchone()
             if codrub_value:
                 codrub_value = codrub_value[0]
-                where_clause.append(f"(SUBSTR(Vyst_mo.grnti, 1, 2) = '{codrub_value}' OR SUBSTR(Vyst_mo.grnti, INSTR(Vyst_mo.grnti, ',') + 1, 2) = '{codrub_value}')")
+                where_clause.append(
+                    f"(SUBSTR(Vyst_mo.grnti, 1, 2) = '{codrub_value}' OR SUBSTR(Vyst_mo.grnti, INSTR(Vyst_mo.grnti, ',') + 1, 2) = '{codrub_value}')")
 
     if vuz_value:
         where_clause.append(f"VUZ.z2 = '{vuz_value}'")
@@ -402,20 +445,22 @@ def string_for_filter():
             vistexp_value = "П"
         where_clause.append(f"Vyst_mo.exhitype = '{vistexp_value}'")
 
-    query = f"{base_query} {join_clause} {join_grntirub}"
+    query = f"{base_query} {join_clause}"
 
     # Если есть условия, добавляем их
     if where_clause:
         query += " WHERE " + " AND ".join(where_clause)
 
+    query += ") as filtered WHERE rn = 1"  # добавляем фильтрацию по rn
+
     print(f"Запрос фильтрации: {query}")  # для проверки
     disconnect_db()
     return query
 
-
-
-# В функции show_filtered_table
+# Функция для фильтрации таблицы
 def show_filtered_table(table_name):
+    current_table_name = table_name
+
     with sqlite3.connect(temp_db_file) as con:
         cur = con.cursor()
 
@@ -433,13 +478,18 @@ def show_filtered_table(table_name):
 
     # Подключение к модели выбора таблицы
     selection_model = table.selectionModel()
-    selection_model.selectionChanged.connect(handle_table_selection)
+    if selection_model:
+        selection_model.selectionChanged.connect(lambda index: update_current_table_text(current_table_name))
 
     # Настройка выбора строки
     table.setSelectionMode(QTableView.SelectionMode.SingleSelection) # Устанавливаем свойство
     table.setSelectionBehavior(QTableView.SelectionBehavior.SelectRows)
 
     disconnect_db()
+
+    # Обновите содержимое QTextBrowser при фильтрации таблицы
+    update_current_table_text(current_table_name)
+    update_amount_str_text()
 
 up_down_sort_box = window.findChild(QComboBox, "up_down_sort_box")
 
@@ -1062,14 +1112,20 @@ def open_add_groupe():
 
 def load_and_close(dialog, file_name):
     file_path = os.path.join("saved_tables", file_name)
+    current_table_name = file_name
     if not file_name or not os.path.exists(file_path):
         show_error_message("Пожалуйста, выберите файл для загрузки.")
         return
     load_table_from_file(file_path, table)
     dialog.close()
 
+    # Обновите содержимое QTextBrowser при загрузке таблицы из файла
+    update_current_table_text(current_table_name)
+    update_amount_str_text()
+
 # Функция для загрузки таблицы из файла
 def load_table_from_file(file_path, table_view):
+
     if not file_path:
         return
 
@@ -1139,6 +1195,76 @@ load_grntirub_table()
 
 question_button.setToolTip("Показать рубрики")
 
+# Функция для открытия нового окна join_2_groupes.ui
+def open_join_2_groupes():
+    join_2_groupes_dialog = QDialog(window)  # Создаем QDialog
+    join_2_groupes_window = uic.loadUi("join_2_groupes.ui", join_2_groupes_dialog)  # Загружаем форму join_2_groupes.ui в QDialog
+    join_2_groupes_dialog.setWindowModality(Qt.WindowModality.ApplicationModal)  # Устанавливаем модальность окна
+    join_2_groupes_dialog.show()
+
+    main_table = join_2_groupes_window.findChild(QTableView, "main_table")
+    groupe_to_join_cbox = join_2_groupes_window.findChild(QComboBox, "groupe_to_join_cbox")
+    groupe_to_join_cbox_2 = join_2_groupes_window.findChild(QComboBox, "groupe_to_join_cbox_2")
+    join_groupe_button = join_2_groupes_window.findChild(QPushButton, "join_groupe_button")
+
+    fill_groupe_to_load_cbox(groupe_to_join_cbox)
+    fill_groupe_to_load_cbox(groupe_to_join_cbox_2)
+
+    groupe_to_join_cbox.currentIndexChanged.connect(lambda index: load_table_from_file(os.path.join("saved_tables", groupe_to_join_cbox.currentText()), main_table))
+    groupe_to_join_cbox_2.currentIndexChanged.connect(lambda index: load_table_from_file(os.path.join("saved_tables", groupe_to_join_cbox_2.currentText()), main_table))
+
+    join_groupe_button.clicked.connect(lambda: join_and_save(join_2_groupes_dialog, groupe_to_join_cbox.currentText(), groupe_to_join_cbox_2.currentText(), main_table))
+
+# Функция для объединения и сохранения таблиц
+def join_and_save(dialog, file_name1, file_name2, table_view):
+    file_path1 = os.path.join("saved_tables", file_name1)
+    file_path2 = os.path.join("saved_tables", file_name2)
+
+    if not file_name1 or not os.path.exists(file_path1) or not file_name2 or not os.path.exists(file_path2):
+        show_error_message("Пожалуйста, выберите оба файла для объединения.")
+        return
+
+    data1 = pd.read_csv(file_path1) if file_path1.endswith(".csv") else pd.read_excel(file_path1)
+    data2 = pd.read_csv(file_path2) if file_path2.endswith(".csv") else pd.read_excel(file_path2)
+
+    joined_data = pd.concat([data1, data2], ignore_index=True)
+
+    # Удаление дубликатов по первым 3 элементам!!!
+    unique_data = joined_data.drop_duplicates(subset=joined_data.columns[:3], keep='first')
+
+    folder_path = "saved_tables"
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    default_file_name = "joined_groupe.csv"
+    file_path, _ = QFileDialog.getSaveFileName(window, "Сохранить объединенную таблицу",
+                                                 os.path.join(folder_path, default_file_name),
+                                                 "CSV Files (*.csv);;Excel Files (*.xlsx)")
+
+    #ЕСЛИ НАМ НЕ ВСЕ РАВНО НА СТРОКИ С ОДИНАКОВЫМ КЛЮЧЕМ
+    if file_path:
+        if file_path.endswith(".csv"):
+            unique_data.to_csv(file_path, index=False)
+        elif file_path.endswith(".xlsx"):
+            unique_data.to_excel(file_path, index=False)
+
+    # #ЕСЛИ НАМ ВСЕ РАВНО НА СТРОКИ С ОДИНАКОВЫМ КЛЮЧЕМ
+    # if file_path:
+    #     if file_path.endswith(".csv"):
+    #         joined_data.to_csv(file_path, index=False)
+    #     elif file_path.endswith(".xlsx"):
+    #         joined_data.to_excel(file_path, index=False)
+
+        model = PandasModel(joined_data)  # Создание модели для объединенных данных
+        table_view.setModel(model)  # Установка модели в таблицу
+        table_view.resizeColumnsToContents()  # Автоматическое изменение размера столбцов
+        table_view.horizontalHeader().setStretchLastSection(True)  # Растягивание последнего столбца
+
+        # dialog.close()
+
+# Подключение кнопки для открытия нового окна join_2_groupes.ui
+join_2_groupes_button = window.findChild(QPushButton, "join_2_groupes_button")
+join_2_groupes_button.clicked.connect(open_join_2_groupes)
 
 window.show()
 app.exec()

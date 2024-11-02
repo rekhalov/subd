@@ -90,10 +90,10 @@ border-radius: 7px</string>
    <widget class="QTableView" name="main_table">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>2391</width>
-      <height>781</height>
+      <x>20</x>
+      <y>140</y>
+      <width>2381</width>
+      <height>811</height>
      </rect>
     </property>
     <property name="font">
@@ -2172,8 +2172,8 @@ border-radius: 7px</string>
    <widget class="QPushButton" name="sort_button">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>860</y>
+      <x>0</x>
+      <y>980</y>
       <width>151</width>
       <height>31</height>
      </rect>
@@ -2208,8 +2208,8 @@ border-radius: 7px</string>
    <widget class="QComboBox" name="up_down_sort_box">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>861</y>
+      <x>170</x>
+      <y>981</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -2255,8 +2255,8 @@ border-radius: 7px</string>
    <widget class="QPushButton" name="add_str_button_2">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>860</y>
+      <x>360</x>
+      <y>980</y>
       <width>151</width>
       <height>31</height>
      </rect>
@@ -2291,8 +2291,8 @@ border-radius: 7px</string>
    <widget class="QPushButton" name="edit_str_button_2">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>860</y>
+      <x>520</x>
+      <y>980</y>
       <width>201</width>
       <height>31</height>
      </rect>
@@ -2327,8 +2327,8 @@ border-radius: 7px</string>
    <widget class="QPushButton" name="save_button">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>910</y>
+      <x>0</x>
+      <y>1030</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -2363,8 +2363,8 @@ border-radius: 7px</string>
    <widget class="QPushButton" name="load_button">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>950</y>
+      <x>0</x>
+      <y>1070</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -2435,8 +2435,8 @@ border-radius: 7px</string>
    <widget class="QPushButton" name="del_str_button_2">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>900</y>
+      <x>360</x>
+      <y>1020</y>
       <width>151</width>
       <height>31</height>
      </rect>
@@ -2468,8 +2468,8 @@ border-radius: 7px</string>
    <widget class="QWidget" name="rubrics_widget" native="true">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>19</y>
+      <x>340</x>
+      <y>40</y>
       <width>711</width>
       <height>871</height>
      </rect>
@@ -2519,6 +2519,79 @@ border-radius: 7px</string>
      </property>
     </widget>
    </widget>
+   <widget class="QTextBrowser" name="current_table_text">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="join_2_groupes_button">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>1070</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(149, 149, 149);
+background-color: rgb(226, 226, 226);
+border-radius: 7px</string>
+    </property>
+    <property name="text">
+     <string>Объеденить две группы</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>plus-button.ico</normaloff>plus-button.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="amount_str_text">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>70</y>
+      <width>191</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semibold</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </widget>
+   <zorder>amount_str_text</zorder>
    <zorder>comboBoxTablitsi</zorder>
    <zorder>pushButtonUpdateTable</zorder>
    <zorder>main_table</zorder>
@@ -2532,6 +2605,8 @@ border-radius: 7px</string>
    <zorder>undo_table_button</zorder>
    <zorder>del_str_button_2</zorder>
    <zorder>rubrics_widget</zorder>
+   <zorder>current_table_text</zorder>
+   <zorder>join_2_groupes_button</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
